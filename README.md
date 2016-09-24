@@ -5,8 +5,8 @@
 ## 1. Установить Grunt:
 
 ```shell
-    cd path-to-project/
-    npm install -g grunt-cli
+cd path-to-project/
+npm install -g grunt-cli
 ```
 
 ## 2. Создание структуры проэкты: 
@@ -26,9 +26,6 @@ mkdir grunt src src/images src/scripts src/styles
 ## 3. Создание Gruntfile.js:
 
 
-      Содержимое:
-      
-   
 ```js    
         module.exports = function(grunt) {
             require('load-grunt-config')(grunt, {
@@ -45,7 +42,7 @@ touch Gruntfile.js
  
  
 ## 4. Создание файла пакета:
-      Содержимое:
+
 ```js
         {
             "name": "my-project",       //Имя проэкта
@@ -61,6 +58,7 @@ touch package.json
 
 
 ## 5. Добавление зависимостей: 
+
 ```shell
     npm install grunt --save-dev
     npm install load-grunt-config --save-dev
@@ -75,8 +73,10 @@ touch package.json
     npm install grunt-contrib-concat --save-dev 
     npm install grunt-contrib-cssmin --save-dev
 ```
+
     
-> Описание:    
+**Описание:**
+
     * grunt: сам исполнитель задач.
     * load-grunt-config: позволяет вам содержать ваш основной Gruntfile коротким и аккуратным.
     * grunt-concurrent: запускает задачи одновременно.
@@ -89,27 +89,31 @@ touch package.json
     * grunt-contrib-watch: запускает задачи при каких-либо изменениях в наблюдаемых файлах.
     * grunt-contrib-concat: плагин конкатенации js файлов.
     * grunt-contrib-cssmin: плагин минификации и конкатенации css.
+    
+    
 ## 6. Конфигурация задач load-grunt-config:
 
-> В директории grunt создайте следующие файлы:
+**В директории grunt создайте следующие файлы:**
     
-        - grunt/aliases.yaml
-        - grunt/concurrent.js
-        - grunt/clean.js
-        - grunt/imagemin.js
-        - grunt/jshint.js
-        - grunt/sass.js
-        - grunt/uglify.js
-        - grunt/watch.js
-	- grunt/concat.js
-	-grunt/cssmin.js
+- grunt/aliases.yaml
+- grunt/concurrent.js
+- grunt/clean.js
+- grunt/imagemin.js
+- grunt/jshint.js
+- grunt/sass.js
+- grunt/uglify.js
+- grunt/watch.js
+- grunt/concat.js
+- grunt/cssmin.js
 
 ```shell      
 touch grunt/aliases.yaml grunt/concurrent.js grunt/clean.js grunt/imagemin.js grunt/jshint.js grunt/sass.js grunt/uglify.js grunt/watch.js grunt/concat.js grunt/cssmin.js
 ```
+
 ## 7. Конфигурация задач
 
-> aliases.yaml:
+**aliases.yaml:**
+
 ```js
         default:
           description: 'Default (production) build'
@@ -140,8 +144,8 @@ touch grunt/aliases.yaml grunt/concurrent.js grunt/clean.js grunt/imagemin.js gr
             - cssmin
             - img   
 ```
-> clean.js:
-    
+
+**clean.js:**
 ```js
         module.exports = {
           all: [
@@ -150,8 +154,7 @@ touch grunt/aliases.yaml grunt/concurrent.js grunt/clean.js grunt/imagemin.js gr
         };
 ```
 
-> concat.js:
-
+**concat.js:**
 ```js
         module.exports = {
             dist: {
@@ -161,10 +164,9 @@ touch grunt/aliases.yaml grunt/concurrent.js grunt/clean.js grunt/imagemin.js gr
         };
 ```
 
-> concurrent.js:
+**concurrent.js:**
 ```js
         module.exports = {
-
           // Настройки задач
           options: {
             limit: 3
@@ -197,7 +199,7 @@ touch grunt/aliases.yaml grunt/concurrent.js grunt/clean.js grunt/imagemin.js gr
         };
 ```
         
-> cssmin.js:
+**cssmin.js:**
 ```js
         module.exports = {
             all: {
@@ -212,7 +214,7 @@ touch grunt/aliases.yaml grunt/concurrent.js grunt/clean.js grunt/imagemin.js gr
         };
 ```
         
-> cssmin.js:
+**cssmin.js:**
 ```js
         module.exports = {
             all: {
@@ -227,7 +229,7 @@ touch grunt/aliases.yaml grunt/concurrent.js grunt/clean.js grunt/imagemin.js gr
         };
 ```
         
-> imagemin.js:
+**imagemin.js:**
 ```js
         module.exports = {
           all: {
@@ -241,7 +243,7 @@ touch grunt/aliases.yaml grunt/concurrent.js grunt/clean.js grunt/imagemin.js gr
         };
 ```
         
-> jshint.js:
+**jshint.js:**
 ```js
         module.exports = {
           options: {
@@ -253,7 +255,7 @@ touch grunt/aliases.yaml grunt/concurrent.js grunt/clean.js grunt/imagemin.js gr
         };
 ```
         
-> sass.js:
+**sass.js:**
 ```js
         module.exports = {
           // Настройки для разработки
@@ -287,7 +289,7 @@ touch grunt/aliases.yaml grunt/concurrent.js grunt/clean.js grunt/imagemin.js gr
         };
 ```
         
-> uglify.js:
+**uglify.js:**
 ```js
         module.exports = {
             dist: {
@@ -298,7 +300,7 @@ touch grunt/aliases.yaml grunt/concurrent.js grunt/clean.js grunt/imagemin.js gr
         };
 ```
 
-> watch.js:
+**watch.js:**
 ```js
         module.exports = {
           options: {
@@ -327,25 +329,25 @@ touch grunt/aliases.yaml grunt/concurrent.js grunt/clean.js grunt/imagemin.js gr
 
 ## 8. Команды: 
 
-    * 1) grunt - Инициализация grunt prod:
-        - 1. Очищает даректорию dist;
-        - 2. Валидация и конкантенация JS;
-        - 3. SCSS -> CSS(prod), минимизация JS;
-        - 4. Минимизация CSS;
-        - 5. Оптимизация Изображений.
-    * 2) grund dev: 
-        - 1. Очищает даректорию dist;
-        - 2. Валидация и конкантенация JS;
-        - 3. SCSS -> CSS(dev), минимизация JS;
-        - 4. Минимизация CSS.
-    * 3) grunt img: Оптимизация Изображений.
-    * 4) grunt devimg:
-       - 1. Инициализация grunt dev;
-       - 2. Инициализация grunt img.
-    * 5) grunt watch: 
-        - 1. Слежение за src/scripts/*.js и src/styles/*.scss;
-        - 2. При изменении JS выполняется их валидация и конкантенация;
-        - 3. При изменении SCSS выполняется sass:dev;
+* 1) grunt - Инициализация grunt prod:
+- 1. Очищает даректорию dist;
+- 2. Валидация и конкантенация JS;
+- 3. SCSS -> CSS(prod), минимизация JS;
+- 4. Минимизация CSS;
+- 5. Оптимизация Изображений.
+* 2) grund dev: 
+- 1. Очищает даректорию dist;
+- 2. Валидация и конкантенация JS;
+- 3. SCSS -> CSS(dev), минимизация JS;
+- 4. Минимизация CSS.
+* 3) grunt img: Оптимизация Изображений.
+* 4) grunt devimg:
+- 1. Инициализация grunt dev;
+- 2. Инициализация grunt img.
+* 5) grunt watch: 
+- 1. Слежение за src/scripts/*.js и src/styles/*.scss;
+- 2. При изменении JS выполняется их валидация и конкантенация;
+- 3. При изменении SCSS выполняется sass:dev;
 
 
 
