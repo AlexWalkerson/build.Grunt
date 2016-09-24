@@ -1,7 +1,7 @@
 # My build via Grund.js 
 
 Перед установкой Grunt-а необходимо установить [Node.js](https://nodejs.org)
-## 1. Установить Grunt, command line:
+## 1. Установить Grunt:
 ```shell
     cd path-to-project/
     npm install -g grunt-cli
@@ -229,7 +229,6 @@ touch grunt/aliases.yaml grunt/concurrent.js grunt/clean.js grunt/imagemin.js gr
           options: {
             reporter: require('jshint-stylish')
           },
-
           main: [
             'src/scripts/*.js'
           ]
@@ -284,12 +283,10 @@ touch grunt/aliases.yaml grunt/concurrent.js grunt/clean.js grunt/imagemin.js gr
 > watch.js:
 ```js
         module.exports = {
-
           options: {
             spawn: false,
             livereload: true
           },
-
           scripts: {
             files: [
               'src/scripts/*.js'
@@ -299,7 +296,6 @@ touch grunt/aliases.yaml grunt/concurrent.js grunt/clean.js grunt/imagemin.js gr
               'concat',
             ]
           },
-
           styles: {
             files: [
               'src/styles/*.scss'
@@ -314,24 +310,24 @@ touch grunt/aliases.yaml grunt/concurrent.js grunt/clean.js grunt/imagemin.js gr
 ## 8. Команды: 
 
     * 1) grunt - Инициализация grunt prod:
-        * 1. Очищает даректорию dist;
-        * 2. Валидация и конкантенация JS;
-        * 3. SCSS -> CSS(prod), минимизация JS;
-        * 4. Минимизация CSS;
-        * 5. Оптимизация Изображений.
+        - 1. Очищает даректорию dist;
+        - 2. Валидация и конкантенация JS;
+        - 3. SCSS -> CSS(prod), минимизация JS;
+        - 4. Минимизация CSS;
+        - 5. Оптимизация Изображений.
     * 2) grund dev: 
-        * 1. Очищает даректорию dist;
-        * 2. Валидация и конкантенация JS;
-        * 3. SCSS -> CSS(dev), минимизация JS;
-        * 4. Минимизация CSS.
+        - 1. Очищает даректорию dist;
+        - 2. Валидация и конкантенация JS;
+        - 3. SCSS -> CSS(dev), минимизация JS;
+        - 4. Минимизация CSS.
     * 3) grunt img: Оптимизация Изображений.
     * 4) grunt devimg:
-       * 1. Инициализация grunt dev;
-       * 2. Инициализация grunt img.
+       - 1. Инициализация grunt dev;
+       - 2. Инициализация grunt img.
     * 5) grunt watch: 
-        * 1. Слежение за src/scripts/*.js и src/styles/*.scss;
-        * 2. При изменении JS выполняется их валидация и конкантенация;
-        * 3. При изменении SCSS выполняется sass:dev;
+        - 1. Слежение за src/scripts/*.js и src/styles/*.scss;
+        - 2. При изменении JS выполняется их валидация и конкантенация;
+        - 3. При изменении SCSS выполняется sass:dev;
 
 
 
