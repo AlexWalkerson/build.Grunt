@@ -1,1 +1,282 @@
-# build.Grunt
+# My build via Grund.js 
+
+Перед установкой Grunt-а необходимо установить Node.js https://nodejs.org
+1. Установить Grunt, command line:
+    cd path-to-project/
+    npm install -g grunt-cli
+2. Создание структуры проэкты: 
+    grunt/
+    src/
+    src/images/
+    src/scripts/
+    src/styles/    
+    mkdir grunt src src/images src/scripts src/styles
+3. Создание Gruntfile:
+    Содержимое:
+        module.exports = function(grunt) {
+            require('load-grunt-config')(grunt, {
+                jitGrunt: true
+            });
+        };
+    touch Gruntfile.js
+4. Создание файла пакета:
+    Содержимое:
+        {
+            "name": "my-project",       //Имя проэкта
+            "version": "0.0.1",         //Версия
+            "description": "My project" //Описание
+        }
+    touch package.json
+5. Добавление зависимостей: 
+    npm install grunt --save-dev
+    npm install load-grunt-config --save-dev
+    npm install grunt-concurrent --save-dev
+    npm install grunt-contrib-clean --save-dev
+    npm install grunt-contrib-imagemin --save-dev
+    npm install grunt-sass --save-dev
+    npm install grunt-contrib-uglify --save-dev
+    npm install grunt-contrib-jshint --save-dev
+    npm install jshint-stylish --save
+    npm install grunt-contrib-watch --save-dev
+    npm install grunt-contrib-concat --save-dev 
+    npm install grunt-contrib-cssmin --save-dev
+    
+    Описание:    
+    grunt: сам исполнитель задач.
+    load-grunt-config: позволяет вам содержать ваш основной Gruntfile коротким и аккуратным.
+    grunt-concurrent: запускает задачи одновременно.
+    grunt-contrib-clean: очень просто, эта задача удаляет «разные штуки» — используйте с осторожностью!
+    grunt-contrib-imagemin: незаменимая вещь для оптимизации изображений.
+    grunt-sass: компиляция ваших SASS/SCSS файлов в CSS. Обратите внимание: эта Sass-задача использует более быстрый компилятор libsass компилятор, но он экспериментальный. Если у вас возникнут проблемы, то лучше используйте более стабильный, но медленный grunt-contrib-sass.
+    grunt-contrib-uglify: делает ваш Javascript красивым и ужасным.
+    grunt-contrib-jshint: валидация файлов Javascript.
+    jshint-stylish: полностью опционально, но эта задача преобразовывает вывод grunt-contrib-jshint в отличный вид.
+    grunt-contrib-watch: запускает задачи при каких-либо изменениях в наблюдаемых файлах.
+    grunt-contrib-concat: плагин конкатенации js файлов.
+    grunt-contrib-cssmin: плагин минификации и конкатенации css.
+6. Конфигурация задач load-grunt-config:
+    В директории grunt создайте следующие файлы:
+        grunt/aliases.yaml
+        grunt/concurrent.js
+        grunt/clean.js
+        grunt/imagemin.js
+        grunt/jshint.js
+        grunt/sass.js
+        grunt/uglify.js
+        grunt/watch.js
+	grunt/concat.js
+	grunt/cssmin.js
+        
+touch grunt/aliases.yaml grunt/concurrent.js grunt/clean.js grunt/imagemin.js grunt/jshint.js grunt/sass.js grunt/uglify.js grunt/watch.js grunt/concat.js grunt/cssmin.js
+7. Конфигурация задач
+    aliases.yaml:
+        default:
+          description: 'Default (production) build'
+          tasks:
+            - prod
+        dev:
+          description: 'Development build'
+          tasks:
+            - clean
+            - 'concurrent:devFirst'
+            - 'concurrent:devSecond'
+            - cssmin
+        img:
+          description: 'Image tasks'
+          tasks:
+            - 'concurrent:imgFirst'
+        devimg:
+          description: 'Development build and image tasks'
+          tasks:
+            - dev
+            - img
+        prod:
+          description: 'Production build'
+          tasks:
+            - clean
+            - 'concurrent:prodFirst'
+            - 'concurrent:prodSecond'
+            - cssmin
+            - img        
+    clean.js:
+        module.exports = {
+          all: [
+            "dist/"
+          ]
+        };
+    concat.js:
+        module.exports = {
+            dist: {
+                src: 'src/scripts/*.js',  // какие файлы конкатенировать
+                dest: 'dist/scripts/build.js'  // куда класть файл, который получиться после процесса конкатенации 
+            }    
+        };
+    concurrent.js:
+        module.exports = {
+
+          // Настройки задач
+          options: {
+            limit: 3
+          },
+
+          // Задачи для разработки
+          devFirst: [
+            'jshint',
+            'concat'
+          ],
+          devSecond: [
+            'sass:dev',
+            'uglify'
+          ],
+
+          // Задачи для продакшна
+          prodFirst: [
+            'jshint',
+            'concat'
+          ],
+          prodSecond: [
+            'sass:prod',
+            'uglify'
+          ],
+
+          // Image tasks
+          imgFirst: [
+            'imagemin'
+          ]
+        };
+    cssmin.js:
+        module.exports = {
+            all: {
+                files: [{
+                  expand: true,
+                  cwd: 'dist/styles', //откуда
+                  src: ['*.css', '!*.min.css'],
+                  dest: 'dist/styles', //куда
+                  ext: '.min.css'
+                }] 
+            }  
+        };
+    cssmin.js:
+        module.exports = {
+            all: {
+                files: [{
+                  expand: true,
+                  cwd: 'dist/styles', //откуда
+                  src: ['*.css', '!*.min.css'],
+                  dest: 'dist/styles', //куда
+                  ext: '.min.css'
+                }] 
+            }  
+        };
+    imagemin.js:
+        module.exports = {
+          all: {
+            files: [{
+              expand: true,
+              cwd: 'src/',
+              src: ['images/*.{png,jpg,gif}'],
+              dest: 'dist/'
+            }]
+          }
+        };
+    jshint.js:
+        module.exports = {
+          options: {
+            reporter: require('jshint-stylish')
+          },
+
+          main: [
+            'src/scripts/*.js'
+          ]
+        };
+    sass.js:
+        module.exports = {
+          // Настройки для разработки
+          dev: {
+            options: {
+              style: 'nested',
+              sourceMap: true
+            },
+            files: [{
+              expand: true,
+              cwd: 'src/styles',
+              src: ['*.scss'],
+              dest: 'dist/styles',
+              ext: '.css'
+            }]
+          },
+          // Настройки для продакшна
+          prod: {
+            options: {
+              style: 'nested',
+              sourceMap: false
+            },
+            files: [{
+              expand: true,
+              cwd: 'src/styles',
+              src: ['*.scss'],
+              dest: 'dist/styles',
+              ext: '.css'
+            }]
+          }
+        };
+    uglify.js:
+        module.exports = {
+            dist: {
+                files: {
+                  'dist/scripts/build.min.js': ['dist/scripts/build.js']
+                }
+              }  
+        };
+    watch.js:
+        module.exports = {
+
+          options: {
+            spawn: false,
+            livereload: true
+          },
+
+          scripts: {
+            files: [
+              'src/scripts/*.js'
+            ],
+            tasks: [
+              'jshint',
+              'concat',
+            ]
+          },
+
+          styles: {
+            files: [
+              'src/styles/*.scss'
+            ],
+            tasks: [
+              'sass:dev',
+            ]
+          },
+        };
+8. Команды: 
+    1) grunt - Инициализация grunt prod:
+        1. Очищает даректорию dist;
+        2. Валидация и конкантенация JS;
+        3. SCSS -> CSS(prod), минимизация JS;
+        4. Минимизация CSS;
+        5. Оптимизация Изображений.
+    2) grund dev: 
+        1. Очищает даректорию dist;
+        2. Валидация и конкантенация JS;
+        3. SCSS -> CSS(dev), минимизация JS;
+        4. Минимизация CSS.
+    3) grunt img: Оптимизация Изображений.
+    4) grunt devimg:
+        1. Инициализация grunt dev;
+        2. Инициализация grunt img.
+    5) grunt watch: 
+        1. Слежение за src/scripts/*.js и src/styles/*.scss;
+        2. При изменении JS выполняется их валидация и конкантенация;
+        3. При изменении SCSS выполняется sass:dev;
+
+
+
+        
+
