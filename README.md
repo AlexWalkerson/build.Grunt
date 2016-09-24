@@ -25,6 +25,9 @@ mkdir grunt src src/images src/scripts src/styles
    
 ## 3. Создание Gruntfile.js:
 
+```shell
+touch Gruntfile.js
+```
 
 ```js    
         module.exports = function(grunt) {
@@ -34,14 +37,12 @@ mkdir grunt src src/images src/scripts src/styles
         };
 ```
 
+ 
+## 4. Создание файла пакета packge.json:
 
-```shell
-touch Gruntfile.js
- ```
- 
- 
- 
-## 4. Создание файла пакета:
+```shell   
+touch package.json
+```
 
 ```js
         {
@@ -50,12 +51,6 @@ touch Gruntfile.js
             "description": "My project" //Описание
         }
 ```
-
-```shell   
-touch package.json
-```
-
-
 
 ## 5. Добавление зависимостей: 
 
@@ -77,18 +72,18 @@ touch package.json
     
 **Описание:**
 
-    * grunt: сам исполнитель задач.
-    * load-grunt-config: позволяет вам содержать ваш основной Gruntfile коротким и аккуратным.
-    * grunt-concurrent: запускает задачи одновременно.
-    * grunt-contrib-clean: очень просто, эта задача удаляет «разные штуки» — используйте с осторожностью!
-    * grunt-contrib-imagemin: незаменимая вещь для оптимизации изображений.
-    * grunt-sass: компиляция ваших SASS/SCSS файлов в CSS.
-    * grunt-contrib-uglify: делает ваш Javascript красивым и ужасным.
-    * grunt-contrib-jshint: валидация файлов Javascript.
-    * jshint-stylish: полностью опционально, но эта задача преобразовывает вывод grunt-contrib-jshint в отличный вид.
-    * grunt-contrib-watch: запускает задачи при каких-либо изменениях в наблюдаемых файлах.
-    * grunt-contrib-concat: плагин конкатенации js файлов.
-    * grunt-contrib-cssmin: плагин минификации и конкатенации css.
+ * grunt: сам исполнитель задач.
+ * load-grunt-config: позволяет вам содержать ваш основной Gruntfile коротким и аккуратным.
+ * grunt-concurrent: запускает задачи одновременно.
+ * grunt-contrib-clean: очень просто, эта задача удаляет «разные штуки» — используйте с осторожностью!
+ * grunt-contrib-imagemin: незаменимая вещь для оптимизации изображений.
+ * grunt-sass: компиляция ваших SASS/SCSS файлов в CSS.
+ * grunt-contrib-uglify: делает ваш Javascript красивым и ужасным.
+ * grunt-contrib-jshint: валидация файлов Javascript.
+ * jshint-stylish: полностью опционально, но эта задача преобразовывает вывод grunt-contrib-jshint в отличный вид.
+ * grunt-contrib-watch: запускает задачи при каких-либо изменениях в наблюдаемых файлах.
+ * grunt-contrib-concat: плагин конкатенации js файлов.
+ * grunt-contrib-cssmin: плагин минификации и конкатенации css.
     
     
 ## 6. Конфигурация задач load-grunt-config:
@@ -330,24 +325,24 @@ touch grunt/aliases.yaml grunt/concurrent.js grunt/clean.js grunt/imagemin.js gr
 ## 8. Команды: 
 
 * 1) grunt - Инициализация grunt prod:
-- 1. Очищает даректорию dist;
-- 2. Валидация и конкантенация JS;
-- 3. SCSS -> CSS(prod), минимизация JS;
-- 4. Минимизация CSS;
-- 5. Оптимизация Изображений.
+   - 1. Очищает даректорию dist;
+   - 2. Валидация и конкантенация JS;
+   - 3. SCSS -> CSS(prod), минимизация JS;
+   - 4. Минимизация CSS;
+   - 5. Оптимизация Изображений.
 * 2) grund dev: 
-- 1. Очищает даректорию dist;
-- 2. Валидация и конкантенация JS;
-- 3. SCSS -> CSS(dev), минимизация JS;
-- 4. Минимизация CSS.
+   - 1. Очищает даректорию dist;
+   - 2. Валидация и конкантенация JS;
+   - 3. SCSS -> CSS(dev), минимизация JS;
+   - 4. Минимизация CSS.
 * 3) grunt img: Оптимизация Изображений.
 * 4) grunt devimg:
-- 1. Инициализация grunt dev;
-- 2. Инициализация grunt img.
+   - 1. Инициализация grunt dev;
+   - 2. Инициализация grunt img.
 * 5) grunt watch: 
-- 1. Слежение за src/scripts/*.js и src/styles/*.scss;
-- 2. При изменении JS выполняется их валидация и конкантенация;
-- 3. При изменении SCSS выполняется sass:dev;
+   - 1. Слежение за src/scripts/*.js и src/styles/*.scss;
+   - 2. При изменении JS выполняется их валидация и конкантенация;
+   - 3. При изменении SCSS выполняется sass:dev;
 
 
 
