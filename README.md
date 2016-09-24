@@ -30,11 +30,11 @@ touch Gruntfile.js
 ```
 
 ```js    
-        module.exports = function(grunt) {
-            require('load-grunt-config')(grunt, {
-                jitGrunt: true
-            });
-        };
+module.exports = function(grunt) {
+   require('load-grunt-config')(grunt, {
+       jitGrunt: true
+   });
+};
 ```
 
  
@@ -45,51 +45,51 @@ touch package.json
 ```
 
 ```js
-        {
-            "name": "my-project",       //Имя проэкта
-            "version": "0.0.1",         //Версия
-            "description": "My project" //Описание
-        }
+{
+   "name": "my-project",       //Имя проэкта
+   "version": "0.0.1",         //Версия
+   "description": "My project" //Описание
+}
 ```
 
 ## 5. Добавление зависимостей: 
 
 ```shell
-    npm install grunt --save-dev
-    npm install load-grunt-config --save-dev
-    npm install grunt-concurrent --save-dev
-    npm install grunt-contrib-clean --save-dev
-    npm install grunt-contrib-imagemin --save-dev
-    npm install grunt-sass --save-dev
-    npm install grunt-contrib-uglify --save-dev
-    npm install grunt-contrib-jshint --save-dev
-    npm install jshint-stylish --save
-    npm install grunt-contrib-watch --save-dev
-    npm install grunt-contrib-concat --save-dev 
-    npm install grunt-contrib-cssmin --save-dev
+npm install grunt --save-dev
+npm install load-grunt-config --save-dev
+npm install grunt-concurrent --save-dev
+npm install grunt-contrib-clean --save-dev
+npm install grunt-contrib-imagemin --save-dev
+npm install grunt-sass --save-dev
+npm install grunt-contrib-uglify --save-dev
+npm install grunt-contrib-jshint --save-dev
+npm install jshint-stylish --save
+npm install grunt-contrib-watch --save-dev
+npm install grunt-contrib-concat --save-dev 
+npm install grunt-contrib-cssmin --save-dev
 ```
 
     
 **Описание:**
 
- * grunt: сам исполнитель задач.
- * load-grunt-config: позволяет вам содержать ваш основной Gruntfile коротким и аккуратным.
- * grunt-concurrent: запускает задачи одновременно.
- * grunt-contrib-clean: очень просто, эта задача удаляет «разные штуки» — используйте с осторожностью!
- * grunt-contrib-imagemin: незаменимая вещь для оптимизации изображений.
- * grunt-sass: компиляция ваших SASS/SCSS файлов в CSS.
- * grunt-contrib-uglify: делает ваш Javascript красивым и ужасным.
- * grunt-contrib-jshint: валидация файлов Javascript.
- * jshint-stylish: полностью опционально, но эта задача преобразовывает вывод grunt-contrib-jshint в отличный вид.
- * grunt-contrib-watch: запускает задачи при каких-либо изменениях в наблюдаемых файлах.
- * grunt-contrib-concat: плагин конкатенации js файлов.
- * grunt-contrib-cssmin: плагин минификации и конкатенации css.
-    
+* grunt: сам исполнитель задач.
+* load-grunt-config: позволяет вам содержать ваш основной Gruntfile коротким и аккуратным.
+* grunt-concurrent: запускает задачи одновременно.
+* grunt-contrib-clean: очень просто, эта задача удаляет «разные штуки» — используйте с осторожностью!
+* grunt-contrib-imagemin: незаменимая вещь для оптимизации изображений.
+* grunt-sass: компиляция ваших SASS/SCSS файлов в CSS.
+* grunt-contrib-uglify: делает ваш Javascript красивым и ужасным.
+* grunt-contrib-jshint: валидация файлов Javascript.
+* jshint-stylish: полностью опционально, но эта задача преобразовывает вывод grunt-contrib-jshint в отличный вид.
+* grunt-contrib-watch: запускает задачи при каких-либо изменениях в наблюдаемых файлах.
+* grunt-contrib-concat: плагин конкатенации js файлов.
+* grunt-contrib-cssmin: плагин минификации и конкатенации css.
+
     
 ## 6. Конфигурация задач load-grunt-config:
 
 **В директории grunt создайте следующие файлы:**
-    
+
 - grunt/aliases.yaml
 - grunt/concurrent.js
 - grunt/clean.js
@@ -110,236 +110,236 @@ touch grunt/aliases.yaml grunt/concurrent.js grunt/clean.js grunt/imagemin.js gr
 **aliases.yaml:**
 
 ```js
-        default:
-          description: 'Default (production) build'
-          tasks:
-            - prod
-        dev:
-          description: 'Development build'
-          tasks:
-            - clean
-            - 'concurrent:devFirst'
-            - 'concurrent:devSecond'
-            - cssmin
-        img:
-          description: 'Image tasks'
-          tasks:
-            - 'concurrent:imgFirst'
-        devimg:
-          description: 'Development build and image tasks'
-          tasks:
-            - dev
-            - img
-        prod:
-          description: 'Production build'
-          tasks:
-            - clean
-            - 'concurrent:prodFirst'
-            - 'concurrent:prodSecond'
-            - cssmin
-            - img   
+default:
+ description: 'Default (production) build'
+ tasks:
+   - prod
+dev:
+ description: 'Development build'
+ tasks:
+   - clean
+   - 'concurrent:devFirst'
+   - 'concurrent:devSecond'
+   - cssmin
+img:
+ description: 'Image tasks'
+ tasks:
+   - 'concurrent:imgFirst'
+devimg:
+ description: 'Development build and image tasks'
+ tasks:
+   - dev
+   - img
+prod:
+ description: 'Production build'
+ tasks:
+   - clean
+   - 'concurrent:prodFirst'
+   - 'concurrent:prodSecond'
+   - cssmin
+   - img   
 ```
 
 **clean.js:**
 ```js
-        module.exports = {
-          all: [
-            "dist/"
-          ]
-        };
+module.exports = {
+ all: [
+   "dist/"
+ ]
+};
 ```
 
 **concat.js:**
 ```js
-        module.exports = {
-            dist: {
-                src: 'src/scripts/*.js',  // какие файлы конкатенировать
-                dest: 'dist/scripts/build.js'  // куда класть файл, который получиться после процесса конкатенации 
-            }    
-        };
+module.exports = {
+   dist: {
+       src: 'src/scripts/*.js',  // какие файлы конкатенировать
+       dest: 'dist/scripts/build.js'  // куда класть файл, который получиться после процесса конкатенации 
+   }    
+};
 ```
 
 **concurrent.js:**
 ```js
-        module.exports = {
-          // Настройки задач
-          options: {
-            limit: 3
-          },
+module.exports = {
+ // Настройки задач
+ options: {
+   limit: 3
+ },
 
-          // Задачи для разработки
-          devFirst: [
-            'jshint',
-            'concat'
-          ],
-          devSecond: [
-            'sass:dev',
-            'uglify'
-          ],
+ // Задачи для разработки
+ devFirst: [
+   'jshint',
+   'concat'
+ ],
+ devSecond: [
+   'sass:dev',
+   'uglify'
+ ],
 
-          // Задачи для продакшна
-          prodFirst: [
-            'jshint',
-            'concat'
-          ],
-          prodSecond: [
-            'sass:prod',
-            'uglify'
-          ],
+ // Задачи для продакшна
+ prodFirst: [
+   'jshint',
+   'concat'
+ ],
+ prodSecond: [
+   'sass:prod',
+   'uglify'
+ ],
 
-          // Image tasks
-          imgFirst: [
-            'imagemin'
-          ]
-        };
+ // Image tasks
+ imgFirst: [
+   'imagemin'
+ ]
+};
 ```
         
 **cssmin.js:**
 ```js
-        module.exports = {
-            all: {
-                files: [{
-                  expand: true,
-                  cwd: 'dist/styles', //откуда
-                  src: ['*.css', '!*.min.css'],
-                  dest: 'dist/styles', //куда
-                  ext: '.min.css'
-                }] 
-            }  
-        };
+module.exports = {
+   all: {
+       files: [{
+         expand: true,
+         cwd: 'dist/styles', //откуда
+         src: ['*.css', '!*.min.css'],
+         dest: 'dist/styles', //куда
+         ext: '.min.css'
+       }] 
+   }  
+};
 ```
         
 **cssmin.js:**
 ```js
-        module.exports = {
-            all: {
-                files: [{
-                  expand: true,
-                  cwd: 'dist/styles', //откуда
-                  src: ['*.css', '!*.min.css'],
-                  dest: 'dist/styles', //куда
-                  ext: '.min.css'
-                }] 
-            }  
-        };
+module.exports = {
+   all: {
+       files: [{
+         expand: true,
+         cwd: 'dist/styles', //откуда
+         src: ['*.css', '!*.min.css'],
+         dest: 'dist/styles', //куда
+         ext: '.min.css'
+       }] 
+   }  
+};
 ```
         
 **imagemin.js:**
 ```js
-        module.exports = {
-          all: {
-            files: [{
-              expand: true,
-              cwd: 'src/',
-              src: ['images/*.{png,jpg,gif}'],
-              dest: 'dist/'
-            }]
-          }
-        };
+module.exports = {
+ all: {
+   files: [{
+     expand: true,
+     cwd: 'src/',
+     src: ['images/*.{png,jpg,gif}'],
+     dest: 'dist/'
+   }]
+ }
+};
 ```
         
 **jshint.js:**
 ```js
-        module.exports = {
-          options: {
-            reporter: require('jshint-stylish')
-          },
-          main: [
-            'src/scripts/*.js'
-          ]
-        };
+module.exports = {
+ options: {
+   reporter: require('jshint-stylish')
+ },
+ main: [
+   'src/scripts/*.js'
+ ]
+};
 ```
         
 **sass.js:**
 ```js
-        module.exports = {
-          // Настройки для разработки
-          dev: {
-            options: {
-              style: 'nested',
-              sourceMap: true
-            },
-            files: [{
-              expand: true,
-              cwd: 'src/styles',
-              src: ['*.scss'],
-              dest: 'dist/styles',
-              ext: '.css'
-            }]
-          },
-          // Настройки для продакшна
-          prod: {
-            options: {
-              style: 'nested',
-              sourceMap: false
-            },
-            files: [{
-              expand: true,
-              cwd: 'src/styles',
-              src: ['*.scss'],
-              dest: 'dist/styles',
-              ext: '.css'
-            }]
-          }
-        };
+module.exports = {
+ // Настройки для разработки
+ dev: {
+   options: {
+     style: 'nested',
+     sourceMap: true
+   },
+   files: [{
+     expand: true,
+     cwd: 'src/styles',
+     src: ['*.scss'],
+     dest: 'dist/styles',
+     ext: '.css'
+   }]
+ },
+ // Настройки для продакшна
+ prod: {
+   options: {
+     style: 'nested',
+     sourceMap: false
+   },
+   files: [{
+     expand: true,
+     cwd: 'src/styles',
+     src: ['*.scss'],
+     dest: 'dist/styles',
+     ext: '.css'
+   }]
+ }
+};
 ```
         
 **uglify.js:**
 ```js
-        module.exports = {
-            dist: {
-                files: {
-                  'dist/scripts/build.min.js': ['dist/scripts/build.js']
-                }
-              }  
-        };
+module.exports = {
+   dist: {
+       files: {
+         'dist/scripts/build.min.js': ['dist/scripts/build.js']
+       }
+     }  
+};
 ```
 
 **watch.js:**
 ```js
-        module.exports = {
-          options: {
-            spawn: false,
-            livereload: true
-          },
-          scripts: {
-            files: [
-              'src/scripts/*.js'
-            ],
-            tasks: [
-              'jshint',
-              'concat',
-            ]
-          },
-          styles: {
-            files: [
-              'src/styles/*.scss'
-            ],
-            tasks: [
-              'sass:dev',
-            ]
-          },
-        };
+module.exports = {
+ options: {
+   spawn: false,
+   livereload: true
+ },
+ scripts: {
+   files: [
+     'src/scripts/*.js'
+   ],
+   tasks: [
+     'jshint',
+     'concat',
+   ]
+ },
+ styles: {
+   files: [
+     'src/styles/*.scss'
+   ],
+   tasks: [
+     'sass:dev',
+   ]
+ },
+};
 ```
 
 ## 8. Команды: 
 
-* 1) grunt - Инициализация grunt prod:
+* grunt - Инициализация grunt prod:
    - 1. Очищает даректорию dist;
    - 2. Валидация и конкантенация JS;
    - 3. SCSS -> CSS(prod), минимизация JS;
    - 4. Минимизация CSS;
    - 5. Оптимизация Изображений.
-* 2) grund dev: 
+* grund dev: 
    - 1. Очищает даректорию dist;
    - 2. Валидация и конкантенация JS;
    - 3. SCSS -> CSS(dev), минимизация JS;
    - 4. Минимизация CSS.
-* 3) grunt img: Оптимизация Изображений.
-* 4) grunt devimg:
+* grunt img: Оптимизация Изображений.
+* grunt devimg:
    - 1. Инициализация grunt dev;
    - 2. Инициализация grunt img.
-* 5) grunt watch: 
+* grunt watch: 
    - 1. Слежение за src/scripts/*.js и src/styles/*.scss;
    - 2. При изменении JS выполняется их валидация и конкантенация;
    - 3. При изменении SCSS выполняется sass:dev;
