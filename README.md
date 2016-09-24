@@ -1,7 +1,9 @@
 # My build via Grund.js 
 
 Перед установкой Grunt-а необходимо установить [Node.js](https://nodejs.org)
+
 ## 1. Установить Grunt:
+
 ```shell
     cd path-to-project/
     npm install -g grunt-cli
@@ -12,11 +14,21 @@
    - src/
    - src/images/
    - src/scripts/
-   - src/styles/    
-   - mkdir grunt src src/images src/scripts src/styles
+   - src/styles/  
+
+   
+```shell
+mkdir grunt src src/images src/scripts src/styles
+```
+
+
    
 ## 3. Создание Gruntfile.js:
+
+
       Содержимое:
+      
+   
 ```js    
         module.exports = function(grunt) {
             require('load-grunt-config')(grunt, {
@@ -25,9 +37,12 @@
         };
 ```
 
+
 ```shell
-    touch Gruntfile.js
+touch Gruntfile.js
  ```
+ 
+ 
  
 ## 4. Создание файла пакета:
       Содержимое:
@@ -40,8 +55,11 @@
 ```
 
 ```shell   
-    touch package.json
+touch package.json
 ```
+
+
+
 ## 5. Добавление зависимостей: 
 ```shell
     npm install grunt --save-dev
