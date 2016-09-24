@@ -6,6 +6,7 @@
     cd path-to-project/
     npm install -g grunt-cli
 ```
+
 ## 2. Создание структуры проэкты: 
    - grunt/
    - src/
@@ -13,6 +14,7 @@
    - src/scripts/
    - src/styles/    
    - mkdir grunt src src/images src/scripts src/styles
+   
 ## 3. Создание Gruntfile.js:
       Содержимое:
 ```js    
@@ -21,22 +23,25 @@
                 jitGrunt: true
             });
         };
-        ```
-        ```shell
+```
+
+```shell
     touch Gruntfile.js
-    ```
+ ```
+ 
 ## 4. Создание файла пакета:
       Содержимое:
-      ```js
+```js
         {
             "name": "my-project",       //Имя проэкта
             "version": "0.0.1",         //Версия
             "description": "My project" //Описание
         }
-        ```
-     ```shell   
+```
+
+```shell   
     touch package.json
-    ```
+```
 ## 5. Добавление зависимостей: 
 ```shell
     npm install grunt --save-dev
@@ -51,9 +56,9 @@
     npm install grunt-contrib-watch --save-dev
     npm install grunt-contrib-concat --save-dev 
     npm install grunt-contrib-cssmin --save-dev
-    ```
+```
     
-    Описание:    
+> Описание:    
     * grunt: сам исполнитель задач.
     * load-grunt-config: позволяет вам содержать ваш основной Gruntfile коротким и аккуратным.
     * grunt-concurrent: запускает задачи одновременно.
@@ -68,7 +73,7 @@
     * grunt-contrib-cssmin: плагин минификации и конкатенации css.
 ## 6. Конфигурация задач load-grunt-config:
 
-    В директории grunt создайте следующие файлы:
+> В директории grunt создайте следующие файлы:
     
         - grunt/aliases.yaml
         - grunt/concurrent.js
@@ -80,12 +85,13 @@
         - grunt/watch.js
 	- grunt/concat.js
 	-grunt/cssmin.js
-  ```shell      
+
+```shell      
 touch grunt/aliases.yaml grunt/concurrent.js grunt/clean.js grunt/imagemin.js grunt/jshint.js grunt/sass.js grunt/uglify.js grunt/watch.js grunt/concat.js grunt/cssmin.js
 ```
 ## 7. Конфигурация задач
 
-    aliases.yaml:
+> aliases.yaml:
 ```js
         default:
           description: 'Default (production) build'
@@ -116,27 +122,29 @@ touch grunt/aliases.yaml grunt/concurrent.js grunt/clean.js grunt/imagemin.js gr
             - cssmin
             - img   
 ```
-    clean.js:
+> clean.js:
     
-    ```js
+```js
         module.exports = {
           all: [
             "dist/"
           ]
         };
-        ```
-    concat.js:
-    ```js
+```
+
+> concat.js:
+
+```js
         module.exports = {
             dist: {
                 src: 'src/scripts/*.js',  // какие файлы конкатенировать
                 dest: 'dist/scripts/build.js'  // куда класть файл, который получиться после процесса конкатенации 
             }    
         };
-        ```
-        
-    concurrent.js:
-    ```js
+```
+
+> concurrent.js:
+```js
         module.exports = {
 
           // Настройки задач
@@ -169,10 +177,10 @@ touch grunt/aliases.yaml grunt/concurrent.js grunt/clean.js grunt/imagemin.js gr
             'imagemin'
           ]
         };
-        ```
+```
         
-    cssmin.js:
-    ```js
+> cssmin.js:
+```js
         module.exports = {
             all: {
                 files: [{
@@ -184,10 +192,10 @@ touch grunt/aliases.yaml grunt/concurrent.js grunt/clean.js grunt/imagemin.js gr
                 }] 
             }  
         };
-        ```
+```
         
-    cssmin.js:
-    ```js
+> cssmin.js:
+```js
         module.exports = {
             all: {
                 files: [{
@@ -199,10 +207,10 @@ touch grunt/aliases.yaml grunt/concurrent.js grunt/clean.js grunt/imagemin.js gr
                 }] 
             }  
         };
-        ```
+```
         
-    imagemin.js:
-    ```js
+> imagemin.js:
+```js
         module.exports = {
           all: {
             files: [{
@@ -213,10 +221,10 @@ touch grunt/aliases.yaml grunt/concurrent.js grunt/clean.js grunt/imagemin.js gr
             }]
           }
         };
-        ```
+```
         
-    jshint.js:
-    ```js
+> jshint.js:
+```js
         module.exports = {
           options: {
             reporter: require('jshint-stylish')
@@ -226,10 +234,10 @@ touch grunt/aliases.yaml grunt/concurrent.js grunt/clean.js grunt/imagemin.js gr
             'src/scripts/*.js'
           ]
         };
-        ```
+```
         
-    sass.js:
-    ```js
+> sass.js:
+```js
         module.exports = {
           // Настройки для разработки
           dev: {
@@ -260,10 +268,10 @@ touch grunt/aliases.yaml grunt/concurrent.js grunt/clean.js grunt/imagemin.js gr
             }]
           }
         };
-        ```
+```
         
-    uglify.js:
-    ```js
+> uglify.js:
+```js
         module.exports = {
             dist: {
                 files: {
@@ -271,9 +279,10 @@ touch grunt/aliases.yaml grunt/concurrent.js grunt/clean.js grunt/imagemin.js gr
                 }
               }  
         };
-        ```
-    watch.js:
-    ```js
+```
+
+> watch.js:
+```js
         module.exports = {
 
           options: {
@@ -300,8 +309,10 @@ touch grunt/aliases.yaml grunt/concurrent.js grunt/clean.js grunt/imagemin.js gr
             ]
           },
         };
-        ```
+```
+
 ## 8. Команды: 
+
     * 1) grunt - Инициализация grunt prod:
         * 1. Очищает даректорию dist;
         * 2. Валидация и конкантенация JS;
