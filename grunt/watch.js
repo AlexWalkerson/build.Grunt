@@ -20,7 +20,8 @@ module.exports = {
       'src/styles/*.scss'
     ],
     tasks: [
-      'sass:dev',
+    'compass:dev',
+      // 'sass:dev',
     ]
   },
 };

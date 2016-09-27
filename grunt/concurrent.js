@@ -11,7 +11,8 @@ module.exports = {
     'concat'
   ],
   devSecond: [
-    'sass:dev',
+  'compass:dev',
+    // 'sass:dev',
     'uglify'
   ],
 
@@ -21,7 +22,8 @@ module.exports = {
     'concat'
   ],
   prodSecond: [
-    'sass:prod',
+    'compass:prod',
+    // 'sass:prod',
     'uglify'
   ],
 

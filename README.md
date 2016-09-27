@@ -1,6 +1,11 @@
 # My build via Grund.js 
 
-Перед установкой Grunt-а необходимо установить [Node.js](https://nodejs.org)
+Все описаное ниже выполнялось в ОС Windows 7.
+
+
+Перед установкой Grunt-а необходимо установить [Node.js](https://nodejs.org).
+
+
 
 ## 1. Установить Grunt:
 
@@ -322,7 +327,53 @@ module.exports = {
 };
 ```
 
-## 8. Команды: 
+## 8. Подключение и настройка Compass.
+
+
+Всю необходимую информацию по установке и настройке можо найти [здесь](https://github.com/gruntjs/grunt-contrib-compass). Ниже приведен пример моих настроек.
+
+>Для того, что бы использовать [Compass](https://github.com/gruntjs/grunt-contrib-compass) должны быть установлены [Ruby](http://rubyinstaller.org/downloads/), [Sass](http://sass-lang.com/install) и [Compass](http://compass-style.org/install/).
+>Если же достаточно одного [Sass](https://github.com/sindresorhus/grunt-sass) компилятора(как в примере выше), то ничего, из перечисленного непотребуется.
+
+### Устанавливаем плагин Compass:
+```shell
+npm install grunt-contrib-compass --save-dev
+```
+
+### Создаем задачу:
+
+**grunt/compass.js:**
+```js
+module.exports = {
+    prod: {                   
+      options: {              
+        sassDir: 'src/styles',      //SCSS-файлы
+        cssDir: 'dist/styles',      //перекомпилированные CSS 
+        imagesDir: 'src/sprite',    //от куда брать картинки для спрайтов
+        imagesPath: 'dist/sprite',  //куда класть спрайты после компеляции
+        fontsDir: 'font',           //папка со шрифтами
+        outputStyle: 'nested',
+        environment: 'production'
+      }
+    },
+    dev: {                    
+      options: {
+        sourcemap: true,
+        sassDir: 'src/styles',
+        cssDir: 'dist/styles',
+        imagesDir: 'src/sprite',
+        imagesPath: 'dist/sprite',
+        fontsDir: 'font',
+        outputStyle: 'nested',
+      }
+    }
+};
+```
+### Редактируем concurrent.js и watch.js: заменяем 'sass:dev' на 'compass:dev', 'sass:prod' на 'compass:prod'.
+
+
+
+## 9. Команды: 
 
 * grunt - Инициализация grunt prod:
    - 1. Очищает даректорию dist;
@@ -331,7 +382,7 @@ module.exports = {
    - 4. Минимизация CSS;
    - 5. Оптимизация Изображений.
 * grund dev: 
-   - 1. Очищает даректорию dist;
+   - 1. Очищает директорию dist;
    - 2. Валидация и конкантенация JS;
    - 3. SCSS -> CSS(dev), минимизация JS;
    - 4. Минимизация CSS.
@@ -342,7 +393,7 @@ module.exports = {
 * grunt watch: 
    - 1. Слежение за src/scripts/*.js и src/styles/*.scss;
    - 2. При изменении JS выполняется их валидация и конкантенация;
-   - 3. При изменении SCSS выполняется sass:dev;
+   - 3. При изменении SCSS выполняется sass:dev(или compass:dev);
 
 
 
