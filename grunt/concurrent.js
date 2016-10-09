@@ -2,33 +2,40 @@ module.exports = {
 
   // Настройки задач
   options: {
-    limit: 3
+    limit: 4
   },
 
   // Задачи для разработки
   devFirst: [
-    'jshint',
-    'concat'
+  'jshint',
+  'concat',
+  'compass:dev',
+  ],
+  devimgFirst: [
+  'jshint',
+  'concat',  
+  'compass:dev',
+  'imagemin',
   ],
   devSecond: [
-  'compass:dev',
-    // 'sass:dev',
-    'uglify'
+  'cssmin',
+  'uglify'
   ],
 
   // Задачи для продакшна
   prodFirst: [
-    'jshint',
-    'concat'
+  'jshint',
+  'concat',  
+  'compass:prod',
+  'imagemin',
   ],
   prodSecond: [
-    'compass:prod',
-    // 'sass:prod',
-    'uglify'
+  'cssmin',
+  'uglify'
   ],
 
   // Image tasks
   imgFirst: [
-    'imagemin'
+  'imagemin'
   ]
 };

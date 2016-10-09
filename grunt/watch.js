@@ -17,7 +17,7 @@ module.exports = {
 
   styles: {
     files: [
-      'src/styles/*.scss'
+      'src/styles/*/*.scss','src/styles/*.scss'
     ],
     tasks: [
     'compass:dev',

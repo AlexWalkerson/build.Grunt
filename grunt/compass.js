@@ -6,8 +6,11 @@ module.exports = {
         imagesDir: 'src/sprite',
         imagesPath: 'dist/sprite',
         fontsDir: 'font',
+        httpFontsDir: 'second/font',
         outputStyle: 'nested',
-        environment: 'production'
+        environment: 'production',
+        assetCacheBuster: false,
+        raw: 'require "bootstrap-sass"\nSass::Script::Number.precision = 10\n',
       }
     },
     dev: {                    // Another target
@@ -18,7 +21,10 @@ module.exports = {
         imagesDir: 'src/sprite',
         imagesPath: 'dist/sprite',
         fontsDir: 'font',
+        httpFontsDir: 'second/font',
         outputStyle: 'nested',
+        assetCacheBuster: false,
+        raw: 'require "bootstrap-sass"\nSass::Script::Number.precision = 10\n',
       }
     }
 
