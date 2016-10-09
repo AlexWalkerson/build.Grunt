@@ -21,6 +21,7 @@ npm install -g grunt-cli
 
 ## 3. Создание структуры проэкты: 
    - grunt/
+   - dist/
    - font/
    - src/
    - src/images/
@@ -30,7 +31,7 @@ npm install -g grunt-cli
 
    
 ```shell
-mkdir grunt font src src/images src/scripts src/styles src/sprite
+mkdir grunt dist font src src/images src/scripts src/styles src/sprite
 ```
 
    
