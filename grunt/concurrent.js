@@ -7,15 +7,9 @@ module.exports = {
 
   // Задачи для разработки
   devFirst: [
-  'jshint',
+  // 'jshint',
   'concat',
   'compass:dev',
-  ],
-  devimgFirst: [
-  'jshint',
-  'concat',  
-  'compass:dev',
-  'imagemin',
   ],
   devSecond: [
   'cssmin',
@@ -24,18 +18,12 @@ module.exports = {
 
   // Задачи для продакшна
   prodFirst: [
-  'jshint',
-  'concat',  
+  // 'jshint',
+  'concat',
   'compass:prod',
-  'imagemin',
   ],
   prodSecond: [
   'cssmin',
   'uglify'
-  ],
-
-  // Image tasks
-  imgFirst: [
-  'imagemin'
   ]
 };

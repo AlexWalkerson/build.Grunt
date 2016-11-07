@@ -3,27 +3,22 @@ default:
   tasks:
     - 'clean:all'
     - 'concurrent:prodFirst'
+    - 'cmq'
     - 'concurrent:prodSecond'    
-    # - prod
 dev:
   description: 'Development build'
   tasks:
-    - 'clean:dev'
-    - 'concurrent:devFirst'
-    - 'concurrent:devSecond'
-# img:
-#   description: 'Image tasks'
-#   tasks:
-#     - 'concurrent:imgFirst'
-devimg:
-  description: 'Development build and image tasks'
-  tasks:
     - 'clean:all'
-    - 'concurrent:devimgFirst'
+    - 'concurrent:devFirst'
+    - 'cmq'
     - 'concurrent:devSecond'
-# prod:
-#   description: 'Production build'
-#   tasks:
-#     - 'clean:all'
-#     - 'concurrent:prodFirst'
-#     - 'concurrent:prodSecond'
+img:
+  description: 'Image tasks'
+  tasks:
+    - 'clean:img'
+    - 'imagemin'
+js:
+  description: 'JS'
+  tasks:
+    - 'concat'
+    - 'uglify'

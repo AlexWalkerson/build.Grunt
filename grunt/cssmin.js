@@ -1,10 +1,11 @@
+var config = require('../config.json');
 module.exports = {
     all: {
         files: [{
           expand: true,
-          cwd: 'dist/styles', //откуда
+          cwd: config.distCssDir, //откуда
           src: ['*.css', '!*.min.css'],
-          dest: 'dist/styles', //куда
+          dest: config.distCssDir, //куда
           ext: '.min.css'
         }] 
     }  

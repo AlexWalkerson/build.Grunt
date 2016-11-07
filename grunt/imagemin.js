@@ -1,10 +1,11 @@
+var config = require('../config.json');
 module.exports = {
   all: {
     files: [{
       expand: true,
-      cwd: 'src/',
-      src: ['images/*.{png,jpg,gif}'],
-      dest: 'dist/'
+      cwd: config.srcImgDir,
+      src: ['*.{png,jpg,gif}', '*/*.{png,jpg,gif}'],
+      dest: config.distImgDir
     }]
   }
 };

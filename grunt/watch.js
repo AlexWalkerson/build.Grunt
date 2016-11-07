@@ -1,3 +1,4 @@
+var config = require('../config.json');
 module.exports = {
 
   options: {
@@ -7,21 +8,21 @@ module.exports = {
 
   scripts: {
     files: [
-      'src/scripts/*.js'
+      config.srcJsDir+'/*.js'
     ],
     tasks: [
-      'jshint',
       'concat',
+      'uglify',
     ]
   },
 
   styles: {
     files: [
-      'src/styles/*/*.scss','src/styles/*.scss'
+      config.srcSassDir+'/*/*.scss',config.srcSassDir+'/*.scss'
     ],
     tasks: [
+    // 'compass:prod',
     'compass:dev',
-      // 'sass:dev',
     ]
   },
 };

@@ -1,7 +1,8 @@
+var config = require('../config.json');
 module.exports = {
     dist: {
         files: {
-          'dist/scripts/build.min.js': ['dist/scripts/build.js']
+          [config.distJSDir+'/build.min.js']: [config.distJSDir+'/build.js']
         }
       }  
 };

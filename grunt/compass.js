@@ -1,27 +1,25 @@
+var config = require('../config.json');
 module.exports = {
     prod: {                   // Target
       options: {              // Target options
-        sassDir: 'src/styles',
-        cssDir: 'dist/styles',
-        imagesDir: 'src/sprite',
-        imagesPath: 'dist/sprite',
-        fontsDir: 'font',
-        httpFontsDir: 'second/font',
+        sassDir: config.srcSassDir,
+        cssDir: config.distCssDir,
+        imagesDir: config.distImgDir,
+        fontsDir: config.distFontsDir,
+        httpFontsDir: config.distFontsDir,
         outputStyle: 'nested',
         environment: 'production',
         assetCacheBuster: false,
         raw: 'require "bootstrap-sass"\nSass::Script::Number.precision = 10\n',
       }
     },
-    dev: {                    // Another target
+    dev: {                    // Dev target
       options: {
         sourcemap: true,
-        sassDir: 'src/styles',
-        cssDir: 'dist/styles',
-        imagesDir: 'src/sprite',
-        imagesPath: 'dist/sprite',
-        fontsDir: 'font',
-        httpFontsDir: 'second/font',
+        sassDir: config.srcSassDir,
+        cssDir: config.distCssDir,
+        imagesDir: config.distImgDir,
+        httpFontsDir: config.distFontsDir,
         outputStyle: 'nested',
         assetCacheBuster: false,
         raw: 'require "bootstrap-sass"\nSass::Script::Number.precision = 10\n',

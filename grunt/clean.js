@@ -1,11 +1,10 @@
+
+var config = require('../config.json');
 module.exports = {  
 	all: {
-    src: ['dist/images', 'dist/scripts', 'dist/styles']  
+		src: [config.distJSDir + '/*.js', config.distCssDir + '/*.*']  
 	},
-	dev: {
-		src: ['dist/scripts', 'dist/styles']  
+	img: {
+		src: [config.distImgDir+'/*']
 	},
-	watch: {
-		src: ['dist/styles']  
-	}
 };
