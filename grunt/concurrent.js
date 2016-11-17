@@ -12,6 +12,10 @@ module.exports = {
   'compass:dev',
   ],
   devSecond: [
+  'autoprefixer',
+  'cmq'
+  ],
+  devThird: [
   'cssmin',
   'uglify'
   ],
@@ -23,6 +27,10 @@ module.exports = {
   'compass:prod',
   ],
   prodSecond: [
+  'autoprefixer',
+  'cmq'
+  ],
+  prodThird: [
   'cssmin',
   'uglify'
   ]

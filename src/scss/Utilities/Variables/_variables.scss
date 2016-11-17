@@ -6,13 +6,15 @@ $body-bg: #fff;
 $font-weight: 400;
 
 //Screen:
-$ss: 320px;
-$xs: 480px;
-$sm: 768px;
-$md: 992px;
-$lg: 1200px;
+$ss: 320px;				
+$xs: 480px;				$xs-1: $xs - 1px;
+$sm: 768px;				$sm-1: $sm - 1px;
+$md: 992px;				$md-1: $md - 1px;
+$lg: 1200px;			$lg-1: $lg - 1px;
 
-$wrapper-max-width: 1600px;
+
+$wrapper-max-width: 100%;
+$container-max-width: 1200px;
 $grid-gutter-width: 30px;
 
 //Links

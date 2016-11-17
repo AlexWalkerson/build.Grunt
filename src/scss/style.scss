@@ -1,23 +1,21 @@
-$fix-ie: false !default; //true if IE8-
-@import "compass/css3";
+$fix-ie: false !default; //false for IE9+
+@import 'Utilities/index.scss';
+@import 'Base/index.scss';
 
-//Vars
-@import "bootstrap/variables";
-@import 'base/vars.scss';
+/**********************
+			LAYOUT
+**********************/
 
-//TB
-@import "bootstrap/mixins";
-@import "bootstrap/normalize";
+@import 'Layout/index.scss';
 
-@import "mixins/mixins";
+/**********************
+			MODULES
+**********************/
 
-@import 'base/font.scss';
-@import 'base/helpClasses.scss';
+@import 'Module/index.scss';
 
+/**********************
+			STATE
+**********************/
 
-
-@import 'body/wrapper.scss';
-
-
-
-
+@import 'State/index.scss';

@@ -8,21 +8,29 @@ module.exports = {
 
   scripts: {
     files: [
-      config.srcJsDir+'/*.js'
+    config.srcJsDir+'/*.js'
     ],
     tasks: [
-      'concat',
-      'uglify',
+    'concat',
+    'uglify',
     ]
   },
 
   styles: {
     files: [
-      config.srcSassDir+'/*/*.scss',config.srcSassDir+'/*.scss'
+    // config.srcSassDir+'/*/*.scss',config.srcSassDir+'/*.scss'
+    config.srcSassDir+'/**'
     ],
     tasks: [
     // 'compass:prod',
     'compass:dev',
     ]
+  },
+
+  images: {
+    files: [
+    config.srcImgDir+'/*'
+    ],
+    tasks: ['img']    
   },
 };

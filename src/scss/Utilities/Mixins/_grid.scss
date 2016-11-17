@@ -1,42 +1,48 @@
-// example @include make-col(6, 4, 3, 2);
+$grid-columns: 12 !default;
+$grid-gutter-width: 30px !default;
+$xs: 480px !default;
+$sm: 768px !default;
+$md: 992px !default;
+$lg: 1200px !default;
+
 @mixin make-col (
-  $xs-col, 
+  $ss-col,
+  $xs-col: $ss-col, 
   $sm-col: $xs-col, 
   $md-col: $sm-col, 
   $lg-col: $md-col )
 {
-
   position: relative;
   min-height: 1px;
   padding-left:  ($grid-gutter-width / 2);
   padding-right: ($grid-gutter-width / 2);
   float: left;
-  @include fix-ie {
-    width: percentage(($lg-col / $grid-columns));
-  }
 
-  @include fix-all {
-    width: percentage(($xs-col / $grid-columns));
-    @if $sm-col != $xs-col {
-      @media (min-width: $screen-sm-min) {    
-        width: percentage(($sm-col / $grid-columns));
-      }
-    } 
-    @if $md-col != $sm-col and $sm-col != $xs-col {
-      @media (min-width: $screen-md-min) {
-        width: percentage(($md-col / $grid-columns));
-      }
-    }
-    @if $lg-col != $md-col and $md-col != $sm-col and $sm-col != $xs-col {
-      @media (min-width: $screen-lg-min) {
-        width: percentage(($lg-col / $grid-columns));
-      }
+  width: percentage(($ss-col / $grid-columns));
+
+  @if $ss-col != $xs-col {
+    @media (min-width: $xs) {   
+      width: percentage(($xs-col / $grid-columns));
     }
   }
-} // end make-col
+  @if $sm-col != $xs-col {
+    @media (min-width: $sm) {    
+      width: percentage(($sm-col / $grid-columns));
+    }
+  } 
+  @if $md-col != $sm-col {
+    @media (min-width: $md) {
+      width: percentage(($md-col / $grid-columns));
+    }
+  }
+  @if $lg-col != $md-col {
+    @media (min-width: $lg) {
+      width: percentage(($lg-col / $grid-columns));
+    }
+  }
+}
+// example @include make-col(6, 4, 3, 2, 1);
 
-
-// Framework grid generation
 @mixin make-grid-columns($i: 1, $list: "%col-xs-#{$i}, %col-sm-#{$i}, %col-md-#{$i}, %col-lg-#{$i}") {
   @for $i from (1 + 1) through $grid-columns {
     $list: "#{$list}, %col-xs-#{$i}, %col-sm-#{$i}, %col-md-#{$i}, %col-lg-#{$i}";
@@ -100,6 +106,7 @@
   @include loop-grid-columns($grid-columns, $class, offset);
 }
 
+
 @mixin container-fixed($gutter: $grid-gutter-width) {
   margin-right: auto;
   margin-left: auto;
@@ -111,33 +118,6 @@
 @mixin make-row($gutter: $grid-gutter-width) {
   margin-left:  ceil(($gutter / -2));
   margin-right: floor(($gutter / -2));
-}
-
-.container, .container-fluid {
-  @include container-fixed;
-}
-.row {
-  @include make-row;
-}
-.container, .container-fluid, .row {
-  @include clearfix;
-}
-
-@include make-grid-columns;
-
-@include make-grid(xs);
-
-@media (min-width: $screen-sm-min) {
-  .container {width: $container-sm;}
-  @include make-grid(sm);
-}
-@media (min-width: $screen-md-min) {
-  .container {width: $container-md;}
-  @include make-grid(md);
-}
-@media (min-width: $screen-lg-min) {
-  .container {width: $container-lg;}
-  @include make-grid(lg);
 }
 
 

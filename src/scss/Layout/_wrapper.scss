@@ -1,0 +1,19 @@
+
+.container-fluid {
+  @include container-fixed;
+}
+.row {
+  @include make-row;
+}
+.container-fluid, .row {
+  @include clearfix;
+}
+
+.container-fluid {
+  max-width: $container-max-width;
+  width: 100%;
+}
+.wrapper {
+  max-width: $wrapper-max-width;
+  margin: 0 auto;
+}

@@ -3,20 +3,21 @@ default:
   tasks:
     - 'clean:all'
     - 'concurrent:prodFirst'
-    - 'cmq'
     - 'concurrent:prodSecond'    
+    - 'concurrent:prodThird'    
 dev:
   description: 'Development build'
   tasks:
     - 'clean:all'
     - 'concurrent:devFirst'
-    - 'cmq'
     - 'concurrent:devSecond'
+    - 'concurrent:devThird'
 img:
   description: 'Image tasks'
   tasks:
     - 'clean:img'
-    - 'imagemin'
+    - 'imagemin:all'
+    - 'svgstore'
 js:
   description: 'JS'
   tasks:

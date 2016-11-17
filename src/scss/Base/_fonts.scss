@@ -1,0 +1,35 @@
+/* rubik-500 - latin */
+@font-face {
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../fonts/Rubik/rubik-v2-latin-500.eot');
+  src: local('Rubik Medium'), local('Rubik-Medium'),
+       url('../fonts/Rubik/rubik-v2-latin-500.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/Rubik/rubik-v2-latin-500.woff2') format('woff2'),
+       url('../fonts/Rubik/rubik-v2-latin-500.woff') format('woff'),
+       url('../fonts/Rubik/rubik-v2-latin-500.ttf') format('truetype'), 
+       url('../fonts/Rubik/rubik-v2-latin-500.svg#Rubik') format('svg'); 
+}
+
+
+
+@font-face {
+  font-family: 'icons';
+  src: url('../fonts/Icon/icons.eot?40940473');
+  src: url('../fonts/Icon/icons.eot?40940473#iefix') format('embedded-opentype'),
+       url('../fonts/Icon/icons.woff2?40940473') format('woff2'),
+       url('../fonts/Icon/icons.woff?40940473') format('woff'),
+       url('../fonts/Icon/icons.ttf?40940473') format('truetype'),
+       url('../fonts/Icon/icons.svg?40940473#icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'icons';
+    src: url('../fonts/Icon/icons.svg?40940473#icons') format('svg');
+  }
+}
+
+

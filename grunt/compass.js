@@ -1,7 +1,7 @@
 var config = require('../config.json');
 module.exports = {
-    prod: {                   // Target
-      options: {              // Target options
+    prod: {                   
+      options: {              
         sassDir: config.srcSassDir,
         cssDir: config.distCssDir,
         imagesDir: config.distImgDir,
@@ -11,9 +11,9 @@ module.exports = {
         environment: 'production',
         assetCacheBuster: false,
         raw: 'require "bootstrap-sass"\nSass::Script::Number.precision = 10\n',
-      }
-    },
-    dev: {                    // Dev target
+    }
+},
+    dev: {                    
       options: {
         sourcemap: true,
         sassDir: config.srcSassDir,
@@ -23,7 +23,7 @@ module.exports = {
         outputStyle: 'nested',
         assetCacheBuster: false,
         raw: 'require "bootstrap-sass"\nSass::Script::Number.precision = 10\n',
-      }
     }
+}
 
 };
