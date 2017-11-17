@@ -1,4 +1,4 @@
-## 1. Вependencies:
+## 1. Dependencies:
 
 - [Node.js](https://nodejs.org);
 - [Ruby](http://rubyinstaller.org/downloads/);
